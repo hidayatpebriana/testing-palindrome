@@ -1,0 +1,28 @@
+<?php
+class Palindrome
+{
+    public static function isPalindrome($word)
+    {
+        $word = strtolower($word);
+        $wordLength = strlen($word);
+        $wordSplitPoint = ceil($wordLength / 2);
+
+        if ($wordLength % 2 == 0) {
+            $firstHalf = substr($word, 0, $wordSplitPoint);
+            $secondHalf = substr($word, $wordSplitPoint, $wordSplitPoint);
+        } else {
+            $firstHalf = substr($word, 0, $wordSplitPoint-1);
+            $secondHalf = substr($word, $wordSplitPoint, $wordSplitPoint);
+        }
+
+        $secondHalfReversed = strrev($secondHalf);
+
+        if ($firstHalf == $secondHalfReversed) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+}
+
+echo Palindrome::isPalindrome('deleveled');
